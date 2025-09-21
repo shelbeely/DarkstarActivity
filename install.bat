@@ -16,7 +16,7 @@ call "%INSTALL_DIR%\Scripts\activate.bat"
 python -m pip install --upgrade pip
 
 echo 📦 Installing dependencies...
-pip install requests mysql-connector-python pynput
+pip install requests pynput
 
 echo.
 echo =========================================
