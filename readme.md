@@ -39,7 +39,6 @@ This will:
 * Install required packages:
 
   * `requests`
-  * `mysql-connector-python`
   * `pynput`
 * Prompt you for your **Darkstar API Key**
 
