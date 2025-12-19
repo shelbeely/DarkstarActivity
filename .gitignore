@@ -1,15 +1,40 @@
 # Ignore Python virtual environments
 venv/
+env/
+.venv/
 
-# Ignore API key (sensitive)
+# Ignore API key and sensitive data (CRITICAL - DO NOT COMMIT)
 api_key.txt
+*.key
+*.pem
+*.pfx
+*_key.txt
+*_secret.txt
+.env
+.env.local
+
+# Ignore activity and timestamp files (may contain sensitive data)
+activity_timestamp.txt
 
 # Ignore Python cache
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.Python
 
 # Ignore logs
 *.log
 Logs/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignore IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

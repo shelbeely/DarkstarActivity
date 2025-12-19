@@ -25,6 +25,8 @@ It integrates **ActivityWatcher** (for app/window usage) with a **keyboard & mou
 
 ## 📦 Setup
 
+**⚠️ Security Note:** Before proceeding, review [SECURITY.md](SECURITY.md) for important security best practices.
+
 1. Clone or download this repository into a folder, for example:
 
    C:\Darkstar\ActivityWatcher\\
@@ -36,7 +38,7 @@ It integrates **ActivityWatcher** (for app/window usage) with a **keyboard & mou
 This will:
 
 * Create a Python virtual environment (`venv/`)
-* Install required packages:
+* Install required packages from `requirements.txt`:
 
   * `requests`
   * `pynput`
@@ -100,6 +102,13 @@ To stop, end the processes in **Task Manager** or reboot.
 
   If you need to reset it later, delete the file and rerun `install.bat`.
 
+  **🔒 Security:** On Unix/Linux/Mac systems, the API key file will automatically have restricted permissions (user read/write only).
+
+* **API Endpoint**
+  By default, data is sent to `https://DarkstarDestinations.com/Activity`.
+  To use a custom endpoint, set the environment variable:
+  setx DARKSTAR\_API\_URL "https://your-custom-endpoint.com/api"
+
 * **Log Cleanup**
   Extractor automatically deletes logs older than **24 hours** from:
   Logs\Activity\\
@@ -136,6 +145,20 @@ To stop, end the processes in **Task Manager** or reboot.
 * **Silent mode does nothing**
 
   * Check `KMActivity.log` and `ExtractActivity.log` if logging is enabled in `run_silent.bat`.
+
+---
+
+## 🔒 Security
+
+For important security information, including:
+- API key protection best practices
+- File permission recommendations
+- Data privacy details
+- Multi-user system considerations
+
+Please read [SECURITY.md](SECURITY.md)
+
+For a detailed security audit of the codebase, see [SECURITY_AUDIT.md](SECURITY_AUDIT.md)
 
 ---
 

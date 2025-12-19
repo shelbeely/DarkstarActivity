@@ -5,6 +5,8 @@ import time
 import traceback
 import sys
 import os
+import stat
+import platform
 
 # ==============================
 # 🔹 INSTALL LOCATION HANDLING 🔹
@@ -37,6 +39,15 @@ def get_api_key():
 
     with open(API_KEY_FILE, "w") as f:
         f.write(api_key)
+    
+    # Set restrictive permissions on Unix-like systems (user read/write only)
+    if platform.system() != "Windows":
+        try:
+            os.chmod(API_KEY_FILE, stat.S_IRUSR | stat.S_IWUSR)
+            print(f"🔒 Set secure permissions on {API_KEY_FILE}")
+        except Exception as e:
+            print(f"⚠️ Could not set file permissions: {e}")
+    
     print(f"✅ API key saved to {API_KEY_FILE}")
     return api_key
 
@@ -75,6 +86,12 @@ def cleanup_logs():
 # 🔹 ACTIVITYWATCH API ENDPOINT 🔹
 # ==============================
 AW_URL = "http://localhost:5600/api/0/buckets"
+
+# ==============================
+# 🔹 DARKSTAR API ENDPOINT 🔹
+# ==============================
+# Can be overridden via environment variable DARKSTAR_API_URL
+DARKSTAR_API_URL = os.environ.get("DARKSTAR_API_URL", "https://DarkstarDestinations.com/Activity")
 
 def fetch_logs():
     response = requests.get(AW_URL)
@@ -151,7 +168,7 @@ def insert_activity_logs(events):
     }
 
     try:
-        api_url = "https://DarkstarDestinations.com/Activity"
+        api_url = DARKSTAR_API_URL
         response = requests.post(api_url, headers=headers, json=payload)
 
         if response.status_code == 200:
