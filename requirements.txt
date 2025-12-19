@@ -1,0 +1,5 @@
+# DarkstarActivity Dependencies
+# Install with: pip install -r requirements.txt
+
+requests>=2.31.0,<3.0.0
+pynput>=1.7.6,<2.0.0

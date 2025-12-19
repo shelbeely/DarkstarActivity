@@ -2,9 +2,22 @@ import threading
 import time
 from datetime import datetime
 from pynput import keyboard, mouse
+import sys
+import os
+
+# ==============================
+# 🔹 INSTALL LOCATION HANDLING 🔹
+# ==============================
+def get_install_root():
+    # Priority: command-line arg → ENV var → fallback default
+    if len(sys.argv) > 1:
+        return sys.argv[1]
+    return os.environ.get("DARKSTAR_INSTALL", r"C:\Darkstar\ActivityWatcher")
+
+INSTALL_ROOT = get_install_root()
 
 # Path to store activity timestamp
-ACTIVITY_FILE = "activity_timestamp.txt"
+ACTIVITY_FILE = os.path.join(INSTALL_ROOT, "activity_timestamp.txt")
 activity_lock = threading.Lock()
 
 def write_timestamp():
