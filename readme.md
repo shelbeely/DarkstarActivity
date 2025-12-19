@@ -93,7 +93,9 @@ To stop, end the processes in **Task Manager** or reboot.
   * Passing a custom install path as the first argument:
     python extract\_activity.py "D:\CustomPath"
   * Or setting an environment variable:
-    setx DARKSTAR\_INSTALL "D:\CustomPath"
+    ```
+    setx DARKSTAR_INSTALL "D:\CustomPath"
+    ```
 
 * **API Key**
   The installer will ask for your Darkstar API key and save it in:
@@ -107,7 +109,9 @@ To stop, end the processes in **Task Manager** or reboot.
 * **API Endpoint**
   By default, data is sent to `https://DarkstarDestinations.com/Activity`.
   To use a custom endpoint, set the environment variable:
-  setx DARKSTAR\_API\_URL "https://your-custom-endpoint.com/api"
+  ```
+  setx DARKSTAR_API_URL "https://your-custom-endpoint.com/api"
+  ```
 
 * **Log Cleanup**
   Extractor automatically deletes logs older than **24 hours** from:
